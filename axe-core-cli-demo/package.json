@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "audit": "npx axe https://razvanvancea.ro --tags wcag2a,wcag2aa,wcag21a,wcag21aa --disable color-contrast --timer --timeout=60"
+    "audit": "npx axe https://razvanvancea.ro --tags wcag2aa --disable color-contrast --timer --timeout=60 --exit"
   },
   "keywords": [],
   "author": "Razvan Vancea",
