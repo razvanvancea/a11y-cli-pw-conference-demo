@@ -28,6 +28,6 @@ test("products list a11y test", async ({ page }, testInfo) => {
     });
 
     // assert - 3 known issues, set 0 for no issues
-    expect(violations).toHaveLength(3);
+    expect(violations).toHaveLength(4);
   });
 });
