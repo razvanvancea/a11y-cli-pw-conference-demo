@@ -1,21 +1,29 @@
 name: axe-core/cli a11y Audit
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: "Log level"
+        required: true
+        default: "warning"
+      tags:
+        description: "Test scenario tags"
 jobs:
   axe-core-cli-a11y-tests:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: cd axe-core-cli-demo && npm ci
-    - name: Install Chrome browser
-      run: cd axe-core-cli-demo && npx browser-driver-manager install chrome
-    - name: Run axe-core-cli a11y tests
-      run: cd axe-core-cli-demo && npm run audit
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: Install dependencies
+        run: cd axe-core-cli-demo && npm ci
+      - name: Install Chrome browser
+        run: cd axe-core-cli-demo && npx browser-driver-manager install chrome
+      - name: Run axe-core-cli a11y tests
+        run: cd axe-core-cli-demo && npm run audit
