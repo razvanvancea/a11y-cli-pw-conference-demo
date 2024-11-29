@@ -16,6 +16,6 @@ jobs:
     - name: Install dependencies
       run: cd axe-core-cli-demo && npm ci
     - name: Install Chrome browser
-      run: cd axe-playwright-e2e-demo && npx browser-driver-manager install chrome
+      run: cd axe-core-cli-demo && npx browser-driver-manager install chrome
     - name: Run axe-core-cli a11y tests
-      run: cd axe-playwright-e2e-demo && npm run audit
+      run: cd axe-core-cli-demo && npm run audit
