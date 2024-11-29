@@ -1,0 +1,16 @@
+{
+  "name": "axe-core-cli-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "audit": "npx axe https://razvanvancea.ro --tags wcag2a,wcag2aa,wcag21a,wcag21aa --disable color-contrast --timer --timeout=60"
+  },
+  "keywords": [],
+  "author": "Razvan Vancea",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@axe-core/cli": "^4.10.1",
+    "browser-driver-manager": "^2.0.1"
+  }
+}

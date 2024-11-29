@@ -1,0 +1,48 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  accessibility-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: cd axe-playwright-e2e-demo && npm ci
+    - name: Install Playwright Browsers
+      run: cd axe-playwright-e2e-demo && npx playwright install --with-deps
+    - name: Run Playwright a11y tests
+      run: cd axe-playwright-e2e-demo && npm run test:a11y
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-a11y-report
+        path: axe-playwright-e2e-demo/playwright-report/
+        retention-days: 30
+
+  e2e-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: cd axe-playwright-e2e-demo && npm ci
+    - name: Install Playwright Browsers
+      run: cd axe-playwright-e2e-demo && npx playwright install --with-deps
+    - name: Run Playwright e2e tests
+      run: cd axe-playwright-e2e-demo && npm run test:e2e
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-e2e-report
+        path: axe-playwright-e2e-demo/playwright-report/
+        retention-days: 30
