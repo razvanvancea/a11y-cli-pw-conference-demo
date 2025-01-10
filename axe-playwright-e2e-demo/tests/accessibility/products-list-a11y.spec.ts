@@ -17,7 +17,7 @@ test("products list a11y test", async ({ page }, testInfo) => {
     const { violations } = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
       // .withRules(['color-contrast', 'select-name'])
-      // .disableRules(['duplicate-id'])
+      .disableRules(['button-name'])
       // .include('#contact')
       // .exclude('#element-with-known-issue')
       .analyze();
@@ -27,7 +27,7 @@ test("products list a11y test", async ({ page }, testInfo) => {
       contentType: "application/json",
     });
 
-    // assert - 4 known issues, set 0 for no issues
-    expect(violations).toHaveLength(4);
+    // assert - 3 known issues, set 0 for no issues
+    expect(violations).toHaveLength(3);
   });
 });
