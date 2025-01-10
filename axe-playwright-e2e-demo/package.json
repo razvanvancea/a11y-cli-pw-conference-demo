@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test:e2e": "npx playwright test tests/e2e",
-    "test": "npx playwright test tests/accessibility"
+    "test:a11y": "npx playwright test tests/accessibility"
   },
   "keywords": [],
   "author": "Razvan Vancea",
