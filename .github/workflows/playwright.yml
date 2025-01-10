@@ -26,7 +26,7 @@ jobs:
       - name: Install Playwright Browsers
         run: cd axe-playwright-e2e-demo && npx playwright install --with-deps
       - name: Run Playwright a11y tests
-        run: cd axe-playwright-e2e-demo && npm run test
+        run: cd axe-playwright-e2e-demo && npm run test:a11y
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
